@@ -80,7 +80,7 @@ public class Main {
             }
         }
 
-        //Afisare matrice
+        //afisare matrice
         System.out.println("Matricea de adiacenta calculata : ");
         afisareMatrice(matrice,n);
 
