@@ -31,4 +31,4 @@ bin/
 .idea/*
 *.iml
 out/*
-*.gitignore
+.gitignore
