@@ -3,6 +3,8 @@ package Lab3.Compulsory;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class Person implements Node, Comparable<Person>{
 
     private String name;
