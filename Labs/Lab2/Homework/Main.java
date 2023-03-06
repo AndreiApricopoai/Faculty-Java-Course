@@ -65,7 +65,7 @@ public class Main {
 
 */
 
-        if(problem.existsPathBetweenLocations(location2,location6))
+        if(problem.existsPathBetweenLocations(location5,location4))
             System.out.println("putem ajunge");
         else
             System.out.println("nu putem ajunge");

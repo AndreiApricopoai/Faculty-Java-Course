@@ -6,7 +6,7 @@ package Lab3.Compulsory;
  *
  * The node represents the second node from the relationship.
  * The context represents the reason that bounds the two nodes together.
- *
+ * @see Node
  * @author Apricopoai Andrei
  * @version 1.0
  */

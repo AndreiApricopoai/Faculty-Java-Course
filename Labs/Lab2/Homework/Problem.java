@@ -2,6 +2,8 @@ package Lab2.Homework;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 public class Problem {
@@ -69,22 +71,25 @@ public class Problem {
         return this;
     }
 
-    private boolean DFS(int current, int destination, boolean[] visited, int [][] graph){
-        System.out.print(current + "  ");
-        visited[current] = true;
+    private static boolean BFS(int[][] graph, int start, int target, int n) {
+        boolean[] visited = new boolean[graph.length]; // to keep track of visited nodes
+        Queue<Integer> queue = new LinkedList<>(); // to keep track of nodes to be visited
+        visited[start] = true; // mark the starting node as visited
+        queue.add(start); // add the starting node to the queue
 
-        if (current == destination) {
-            return true;
-        }
-
-        for (int i = 0; i < locations.size()-1 ; i++) {
-            if (graph[current][i] == 1 && !visited[i]) {
-                if (DFS(i, destination, visited, graph)) {
-                    return true;
+        while (!queue.isEmpty()) {
+            int current = queue.poll(); // remove the first node from the queue and process it
+            if (current == target) { // if we have reached the target node, return true
+                return true;
+            }
+            for (int i = 0; i < n; i++) {
+                if (graph[current][i] == 1 && !visited[i]) { // if there is an edge from the current node to the next node, and it hasn't been visited yet
+                    visited[i] = true; // mark the next node as visited
+                    queue.add(i); // add the next node to the queue
                 }
             }
         }
-        return false;
+        return false; // if we have exhausted all possible paths and still haven't reached the target node, return false
     }
 
 
@@ -113,10 +118,6 @@ public class Problem {
             graph[j][i] = 1;
         }
 
-        boolean[] visited = new boolean[n];
-
-        for(int i = 0 ; i < n ; i++)
-            visited[i] = false;
 
         int start = map.get(location1).intValue();
         int end = map.get(location2).intValue();
@@ -130,7 +131,7 @@ public class Problem {
 
         }
 
-        return DFS(start, end, visited, graph);
+        return BFS(graph, start, end, n);
     }
 
     public boolean isValidInstance(){
