@@ -16,11 +16,11 @@ public class Problem {
         this.connections = new ArrayList<Connection>();
     }
 
-    public Problem addLocation(Location addedLocation){
+    public Problem addLocation(Location addedLocation) throws Exception {
 
         for (Location location : locations) {
             if(location.equals(addedLocation))
-                return this; // thow error
+                throw new Exception("Eroare add location"); // thow error
         }
         //add location
         locations.add(addedLocation);
@@ -28,11 +28,11 @@ public class Problem {
         return this;
     }
 
-    public Problem addRoad(Road addedRoad){
+    public Problem addRoad(Road addedRoad) throws Exception {
 
         for (Road road : roads) {
             if(road.equals(addedRoad))
-                return this; // thow error
+                throw new Exception("Eroare add road"); // thow error
         }
         //add location
         roads.add(addedRoad);
@@ -40,17 +40,17 @@ public class Problem {
         return this;
     }
 
-    public Problem addConnection(Connection addedConnection){
+    public Problem addConnection(Connection addedConnection) throws Exception {
 
         for (Connection connection : connections) {
             if(addedConnection.getNode1().equals(addedConnection.getNode2()))
-                return this;
+                throw new Exception("Eroare add connection");
             if(connection.getEdge().equals(addedConnection.getEdge()))
-                return this;
+                throw new Exception("Eroare add connection");
             if(connection.getNode1().equals(addedConnection.getNode1()) && connection.getNode2().equals(addedConnection.getNode2()))
-                return this;
+                throw new Exception("Eroare add connection");
             if(connection.getNode1().equals(addedConnection.getNode2()) && connection.getNode2().equals(addedConnection.getNode1()))
-                return this;
+                throw new Exception("Eroare add connection");
         }
 
         double x1 = (double) addedConnection.getNode1().getxPosition();
@@ -61,7 +61,7 @@ public class Problem {
         double distance =  Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
         if(addedConnection.getEdge().getLength() < (int)distance)
-            return this;
+            throw new Exception("Eroare add connection");
 
         connections.add(addedConnection);
 
@@ -70,13 +70,14 @@ public class Problem {
     }
 
     private boolean DFS(int current, int destination, boolean[] visited, int [][] graph){
+        System.out.print(current + "  ");
+        visited[current] = true;
+
         if (current == destination) {
             return true;
         }
 
-        visited[current] = true;
-
-        for (int i = 0; i < locations.size() -1; i++) {
+        for (int i = 0; i < locations.size()-1 ; i++) {
             if (graph[current][i] == 1 && !visited[i]) {
                 if (DFS(i, destination, visited, graph)) {
                     return true;
@@ -113,8 +114,21 @@ public class Problem {
         }
 
         boolean[] visited = new boolean[n];
+
+        for(int i = 0 ; i < n ; i++)
+            visited[i] = false;
+
         int start = map.get(location1).intValue();
         int end = map.get(location2).intValue();
+
+        for(int i = 0 ; i < n ; i++){
+            for(int j = 0 ; j < n ; j++)
+            {
+                System.out.print(graph[i][j]+" ");
+            }
+            System.out.println();
+
+        }
 
         return DFS(start, end, visited, graph);
     }

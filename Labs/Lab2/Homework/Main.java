@@ -19,34 +19,56 @@ public class Main {
 
         Connection connection1 = new Connection(location1,location2,road1);
         Connection connection2 = new Connection(location1,location6,road2);
-        Connection connection3 = new Connection(location2,location5,road3);
+        Connection connection3 = new Connection(location2,location6,road3);
         Connection connection4 = new Connection(location5,location3,road4);
 
         Problem problem = new Problem();
 
-        problem.addLocation(location1)
-                .addLocation(location2)
-                .addLocation(location3)
-                .addLocation(location4)
-                .addLocation(location5)
-                .addLocation(location6);
+        try {
+            problem.addLocation(location1)
+                    .addLocation(location2)
+                    .addLocation(location3)
+                    .addLocation(location4)
+                    .addLocation(location5)
+                    .addLocation(location6);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
 
-        problem.addRoad(road1)
-                .addRoad(road2)
-                .addRoad(road3)
-                .addRoad(road4);
+        }
 
-        problem.addConnection(connection1)
-                .addConnection(connection2)
-                .addConnection(connection3)
-                .addConnection(connection4);
+        try {
+            problem.addRoad(road1)
+                    .addRoad(road2)
+                    .addRoad(road3)
+                    .addRoad(road4);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
 
-        //problem.isValidInstance();
-        //problem.existsPathBetweenLocations(location1,location2);
+        try {
+            problem.addConnection(connection1)
+                    .addConnection(connection2)
+                    .addConnection(connection3)
+                    .addConnection(connection4);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
 
+        }
+    /*
+        if(problem.isValidInstance())
+            System.out.println("Valid Instance");
+        else
+            System.out.println("Invalid Instance");
 
+*/
 
-
+        if(problem.existsPathBetweenLocations(location2,location6))
+            System.out.println("putem ajunge");
+        else
+            System.out.println("nu putem ajunge");
 
 
 
