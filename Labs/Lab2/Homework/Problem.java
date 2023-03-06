@@ -6,18 +6,31 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 
+/**
+ * The type Problem.
+ */
 public class Problem {
 
     private ArrayList<Location> locations;
     private ArrayList<Road> roads;
     private ArrayList<Connection> connections;
 
+    /**
+     * Instantiates a new Problem.
+     */
     public Problem(){
         this.locations = new ArrayList<Location>();
         this.roads = new ArrayList<Road>();
         this.connections = new ArrayList<Connection>();
     }
 
+    /**
+     * Add location problem.
+     *
+     * @param addedLocation the added location
+     * @return the problem
+     * @throws Exception the exception
+     */
     public Problem addLocation(Location addedLocation) throws Exception {
 
         for (Location location : locations) {
@@ -30,6 +43,13 @@ public class Problem {
         return this;
     }
 
+    /**
+     * Add road problem.
+     *
+     * @param addedRoad the added road
+     * @return the problem
+     * @throws Exception the exception
+     */
     public Problem addRoad(Road addedRoad) throws Exception {
 
         for (Road road : roads) {
@@ -42,6 +62,13 @@ public class Problem {
         return this;
     }
 
+    /**
+     * Add connection problem.
+     *
+     * @param addedConnection the added connection
+     * @return the problem
+     * @throws Exception the exception
+     */
     public Problem addConnection(Connection addedConnection) throws Exception {
 
         for (Connection connection : connections) {
@@ -93,15 +120,24 @@ public class Problem {
     }
 
 
+    /**
+     * Exists path between locations boolean.
+     *
+     * @param location1 the location 1
+     * @param location2 the location 2
+     * @return the boolean
+     */
     public boolean existsPathBetweenLocations(Location location1, Location location2){
 
-        int n = locations.size();
-        int[][] graph = new int[n][n];
+        int n = locations.size(); // we get the number of nodes (locations)
+        int[][] graph = new int[n][n]; // create a new matrix of nxn
 
+        //initialize the matrix with 0
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < n ; j++)
                 graph[i][j] = 0;
         }
+
         HashMap<Location, Integer> map = new HashMap<>();
 
         int k = 0;
@@ -130,10 +166,15 @@ public class Problem {
             System.out.println();
 
         }
-
+        // verificam daca se poate ajunge de la nodul(locatia) start la nodul(locatia) end.
         return BFS(graph, start, end, n);
     }
 
+    /**
+     *  A method that checking if the current Problem instance is valid or not.
+     *
+     * @return a boolean value checking if the current Problem instance is valid or not.
+     */
     public boolean isValidInstance(){
 
         //check if the locations list contains unique elements

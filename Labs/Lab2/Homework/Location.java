@@ -3,6 +3,11 @@ package Lab2.Homework;
 
 import java.util.Objects;
 
+/** An abstract class representing a Location
+ *  As members it has a location name, and the coordinates representing its position.
+ *  @author Apricopoai Andrei
+ *  @version 1.0
+ */
 public abstract class Location {
 
 
@@ -11,6 +16,9 @@ public abstract class Location {
     protected int yPosition;
 
 
+    /**
+     * It constructs a default Location object having the name : "N/A" and the coordinates (-1,-1).
+     */
     //Constructors
     public Location(){ // default
         this.locationName = "N/A";

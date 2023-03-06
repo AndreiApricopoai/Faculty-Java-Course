@@ -2,36 +2,73 @@ package Lab2.Homework;
 
 import java.util.Objects;
 
+/**
+ * The type Road.
+ */
 public abstract class Road {
 
+    /**
+     * The Speed limit.
+     */
     protected int speedLimit; // (km/h)
+    /**
+     * The Length.
+     */
     protected int length; // (km)
 
-    //Constructors
+    /**
+     * Instantiates a new Road.
+     */
+//Constructors
     public Road() { // default
         this.speedLimit = -1;
         this.length = -1;
     }
 
+    /**
+     * Instantiates a new Road.
+     *
+     * @param speedLimit the speed limit
+     * @param length     the length
+     */
     public Road(int speedLimit, int length) {
         this.speedLimit = speedLimit;
         this.length = length;
     }
 
 
-
+    /**
+     * Gets speed limit.
+     *
+     * @return the speed limit
+     */
     public int getSpeedLimit() {
         return speedLimit;
     }
 
+    /**
+     * Sets speed limit.
+     *
+     * @param speedLimit the speed limit
+     */
     public void setSpeedLimit(int speedLimit) {
         this.speedLimit = speedLimit;
     }
 
+    /**
+     * Gets length.
+     *
+     * @return the length
+     */
     public int getLength() {
         return length;
     }
 
+    /**
+     * Sets length.
+     *
+     * @param length the length
+     */
     public void setLength(int length) {
         this.length = length;
     }

@@ -3,23 +3,43 @@ package Lab2.Homework;
 
 import java.util.Objects;
 
+/**
+ * The type Express.
+ */
 public class Express extends Road {
     private boolean hasIntersection;
     private boolean trucksAllowed;
 
 
+    /**
+     * Instantiates a new Express.
+     */
     public Express() { // default
         super();
         this.hasIntersection = false;
         this.trucksAllowed = false;
     }
 
+    /**
+     * Instantiates a new Express.
+     *
+     * @param hasIntersection the has intersection
+     * @param trucksAllowed   the trucks allowed
+     */
     public Express(boolean hasIntersection, boolean trucksAllowed) {
         super();
         this.hasIntersection = hasIntersection;
         this.trucksAllowed = trucksAllowed;
     }
 
+    /**
+     * Instantiates a new Express.
+     *
+     * @param speedLimit      the speed limit
+     * @param length          the length
+     * @param hasIntersection the has intersection
+     * @param trucksAllowed   the trucks allowed
+     */
     public Express(int speedLimit, int length, boolean hasIntersection, boolean trucksAllowed) {
         super(speedLimit, length);
         this.hasIntersection = hasIntersection;
@@ -27,19 +47,38 @@ public class Express extends Road {
     }
 
 
-
+    /**
+     * Is has intersection boolean.
+     *
+     * @return the boolean
+     */
     public boolean isHasIntersection() {
         return hasIntersection;
     }
 
+    /**
+     * Sets has intersection.
+     *
+     * @param hasIntersection the has intersection
+     */
     public void setHasIntersection(boolean hasIntersection) {
         this.hasIntersection = hasIntersection;
     }
 
+    /**
+     * Is trucks allowed boolean.
+     *
+     * @return the boolean
+     */
     public boolean isTrucksAllowed() {
         return trucksAllowed;
     }
 
+    /**
+     * Sets trucks allowed.
+     *
+     * @param trucksAllowed the trucks allowed
+     */
     public void setTrucksAllowed(boolean trucksAllowed) {
         this.trucksAllowed = trucksAllowed;
     }
