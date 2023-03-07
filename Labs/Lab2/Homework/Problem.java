@@ -17,6 +17,7 @@ public class Problem {
 
     /**
      * Instantiates a new Problem.
+     * Here we create 3 new List objects representing the location list, the road list, and the connections List.
      */
     public Problem(){
         this.locations = new ArrayList<Location>();
@@ -33,14 +34,15 @@ public class Problem {
      */
     public Problem addLocation(Location addedLocation) throws Exception {
 
+        // Ne asiguram sa nu existe alta locatie egala cu cea pe care dorim sa o adaugam.
         for (Location location : locations) {
             if(location.equals(addedLocation))
-                throw new Exception("Eroare add location"); // thow error
+                throw new Exception("Eroare add location");
         }
-        //add location
+        // La final daca totul e ok, se adauga locatia.
         locations.add(addedLocation);
 
-        return this;
+        return this; // Dam return la obiectul current pentru a avea un chain de metode.
     }
 
     /**
@@ -52,15 +54,19 @@ public class Problem {
      */
     public Problem addRoad(Road addedRoad) throws Exception {
 
+        // Ne asiguram sa nu existe alt drum egal cu cel pe care dorim sa il adaugam.
         for (Road road : roads) {
             if(road.equals(addedRoad))
                 throw new Exception("Eroare add road"); // thow error
         }
-        //add location
+        // La final daca totul e ok, se adauga drumul.
         roads.add(addedRoad);
 
-        return this;
+        return this; // Dam return la obiectul current pentru a avea un chain de metode.
     }
+
+
+
 
     /**
      * Add connection problem.
@@ -71,6 +77,10 @@ public class Problem {
      */
     public Problem addConnection(Connection addedConnection) throws Exception {
 
+        // Aici verificam:
+        // 1. Sa nu avem conexiune de la un nod la el insusi
+        // 2. Sa nu avem 2 conexiuni legate prin aceelasi drum
+        // 3. Sa nu avem 2 conexiuni cu aceleasi noduri
         for (Connection connection : connections) {
             if(addedConnection.getNode1().equals(addedConnection.getNode2()))
                 throw new Exception("Eroare add connection");
@@ -82,6 +92,8 @@ public class Problem {
                 throw new Exception("Eroare add connection");
         }
 
+        // Aici verificam conditita ca lungimea drumului sa nu fie mai mica decat
+        // distanta euclidiana dintre cele 2 locatii
         double x1 = (double) addedConnection.getNode1().getxPosition();
         double x2 = (double) addedConnection.getNode2().getxPosition();
         double y1 = (double) addedConnection.getNode1().getyPosition();
@@ -89,16 +101,27 @@ public class Problem {
 
         double distance =  Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 
+
         if(addedConnection.getEdge().getLength() < (int)distance)
             throw new Exception("Eroare add connection");
 
+        // In caz ca totul merge bine, adaugam conexiunea.
         connections.add(addedConnection);
 
 
-        return this;
+        return this; // Dam return la obiectul current pentru a avea un chain de metode.
     }
 
-    private static boolean BFS(int[][] graph, int start, int target, int n) {
+
+    /**
+     *
+     * @param graph the actual graph matrix to be parsed.
+     * @param start the starting node.
+     * @param destination the destination node.
+     * @param n number of nodes in the graph.
+     * @return a boolean value representing whether we can get to node end from node start or not.
+     */
+    private static boolean BFS(int[][] graph, int start, int destination, int n) {
         boolean[] visited = new boolean[graph.length]; // to keep track of visited nodes
         Queue<Integer> queue = new LinkedList<>(); // to keep track of nodes to be visited
         visited[start] = true; // mark the starting node as visited
@@ -106,7 +129,7 @@ public class Problem {
 
         while (!queue.isEmpty()) {
             int current = queue.poll(); // remove the first node from the queue and process it
-            if (current == target) { // if we have reached the target node, return true
+            if (current == destination) { // if we have reached the target node, return true
                 return true;
             }
             for (int i = 0; i < n; i++) {
@@ -120,19 +143,21 @@ public class Problem {
     }
 
 
+
+
     /**
      * Exists path between locations boolean.
      *
-     * @param location1 the location 1
-     * @param location2 the location 2
-     * @return the boolean
+     * @param location1 the location 1 which is the starting node.
+     * @param location2 the location 2 which is the destination node.
+     * @return a boolean value representing whether we can get to node end from node start or not.
      */
     public boolean existsPathBetweenLocations(Location location1, Location location2){
 
-        int n = locations.size(); // we get the number of nodes (locations)
-        int[][] graph = new int[n][n]; // create a new matrix of nxn
+        int n = locations.size(); // Aici punem in n numarul de noduri
+        int[][] graph = new int[n][n]; // Cream o matrice de n x n
 
-        //initialize the matrix with 0
+        // Punem 0 in toata matricea
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < n ; j++)
                 graph[i][j] = 0;
@@ -142,11 +167,13 @@ public class Problem {
 
         int k = 0;
 
+        // Asignam pentru fiecare locatie cate un index de la 0 la n-1
         for (Location location : locations) {
             map.put(location,new Integer(k));
             k++;
         }
 
+        // Pentru fiecare conexiune punem in matrice pe pozitia (i,j) = 1 si (j,i) = 1
         for (Connection connection : connections) {
             int i = map.get(connection.getNode1()).intValue();
             int j = map.get(connection.getNode2()).intValue();
@@ -154,10 +181,10 @@ public class Problem {
             graph[j][i] = 1;
         }
 
+        int start = map.get(location1).intValue(); // i = starting node
+        int end = map.get(location2).intValue(); // j = destination node
 
-        int start = map.get(location1).intValue();
-        int end = map.get(location2).intValue();
-
+        // Aici afisam matricea
         for(int i = 0 ; i < n ; i++){
             for(int j = 0 ; j < n ; j++)
             {
@@ -169,6 +196,8 @@ public class Problem {
         // verificam daca se poate ajunge de la nodul(locatia) start la nodul(locatia) end.
         return BFS(graph, start, end, n);
     }
+
+
 
     /**
      *  A method that checking if the current Problem instance is valid or not.

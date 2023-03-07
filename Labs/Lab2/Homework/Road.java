@@ -4,6 +4,8 @@ import java.util.Objects;
 
 /**
  * The type Road.
+ * @author Apricopoai Andrei
+ * @version 1.0
  */
 public abstract class Road {
 
@@ -17,16 +19,15 @@ public abstract class Road {
     protected int length; // (km)
 
     /**
-     * Instantiates a new Road.
+     * Instantiates a new default Road object.
      */
-//Constructors
     public Road() { // default
         this.speedLimit = -1;
         this.length = -1;
     }
 
     /**
-     * Instantiates a new Road.
+     * Instantiates a new Road object.
      *
      * @param speedLimit the speed limit
      * @param length     the length
@@ -73,6 +74,12 @@ public abstract class Road {
         this.length = length;
     }
 
+
+    /**
+     * This is the implementation of the method equals() from the Object class.
+     * @param o the second object that we compare the current one to.
+     * @return a boolean value representing whether the two objects are equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,11 +88,19 @@ public abstract class Road {
         return speedLimit == road.speedLimit && length == road.length;
     }
 
+    /**
+     * This is a hashing function.
+     * @return an int representing the hash-ed value of the members.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(speedLimit, length);
     }
 
+    /**
+     * This constructs a String object representing the object info.
+     * @return a String object representing the object info.
+     */
     @Override
     public String toString() {
         return "Road{" +

@@ -5,6 +5,8 @@ import java.util.Objects;
 
 /**
  * The type Express.
+ * @author Apricopoai Andrei
+ * @version 1.0
  */
 public class Express extends Road {
     private boolean hasIntersection;
@@ -12,7 +14,7 @@ public class Express extends Road {
 
 
     /**
-     * Instantiates a new Express.
+     * Instantiates a new default Express object.
      */
     public Express() { // default
         super();
@@ -21,7 +23,7 @@ public class Express extends Road {
     }
 
     /**
-     * Instantiates a new Express.
+     * Instantiates a new Express object.
      *
      * @param hasIntersection the has intersection
      * @param trucksAllowed   the trucks allowed
@@ -84,6 +86,13 @@ public class Express extends Road {
     }
 
 
+
+
+    /**
+     * This is the implementation of the method equals() from the Object class.
+     * @param o the second object that we compare the current one to.
+     * @return a boolean value representing whether the two objects are equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,12 +102,23 @@ public class Express extends Road {
         return hasIntersection == express.hasIntersection && trucksAllowed == express.trucksAllowed;
     }
 
+
+
+    /**
+     * This is a hashing function.
+     * @return an int representing the hash-ed value of the members.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), hasIntersection, trucksAllowed);
     }
 
 
+
+    /**
+     * This constructs a String object representing the object info.
+     * @return a String object representing the object info.
+     */
     @Override
     public String toString() {
         return "Express{" +

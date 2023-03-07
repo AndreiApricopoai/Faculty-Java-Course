@@ -2,6 +2,8 @@ package Lab2.Homework;
 
 /**
  * The type Connection.
+ * @author Apricopoai Andrei
+ * @version 1.0
  */
 public class Connection {
 
@@ -76,6 +78,12 @@ public class Connection {
         this.edge = edge;
     }
 
+
+
+    /**
+     * This constructs a String object representing the object info.
+     * @return a String object representing the object info.
+     */
     @Override
     public String toString() {
         return "Connection{" +

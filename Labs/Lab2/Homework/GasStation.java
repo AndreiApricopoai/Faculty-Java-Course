@@ -5,6 +5,8 @@ import java.util.Objects;
 /**
  * The type Gas station.
  * This class extends Location abstract class.
+ * @author Apricopoai Andrei
+ * @version 1.0
  */
 public class GasStation extends Location{
 
@@ -84,6 +86,12 @@ public class GasStation extends Location{
     }
 
 
+
+    /**
+     * This is the implementation of the method equals() from the Object class.
+     * @param o the second object that we compare the current one to.
+     * @return a boolean value representing whether the two objects are equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,10 +101,18 @@ public class GasStation extends Location{
         return gallonPrice == that.gallonPrice && numberOfPumps == that.numberOfPumps;
     }
 
+
+
+    /**
+     * This is a hashing function.
+     * @return an int representing the hash-ed value of the members.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), gallonPrice, numberOfPumps);
     }
+
+
 
     /**
      * Constructs a String object which contains the details of the current GasStation object.

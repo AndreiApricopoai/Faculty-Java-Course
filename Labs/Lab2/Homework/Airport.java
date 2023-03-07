@@ -4,6 +4,8 @@ import java.util.Objects;
 
 /**
  * The type Airport. This class extends the Location abstract class.
+ * @author Apricopoai Andrei
+ * @version 1.0
  */
 public class Airport extends Location{
 
@@ -83,6 +85,13 @@ public class Airport extends Location{
         this.maxCapacity = maxCapacity;
     }
 
+
+
+    /**
+     * This is the implementation of the method equals() from the Object class.
+     * @param o the second object that we compare the current one to.
+     * @return a boolean value representing whether the two objects are equal or not.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,11 +101,21 @@ public class Airport extends Location{
         return numberOfTerminals == airport.numberOfTerminals && maxCapacity == airport.maxCapacity;
     }
 
+
+    /**
+     * This is a hashing function.
+     * @return an int representing the hash-ed value of the members.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), numberOfTerminals, maxCapacity);
     }
 
+
+    /**
+     * This constructs a String object representing the object info.
+     * @return a String object representing the object info.
+     */
     @Override
     public String toString() {
         return "Airport{" +
