@@ -122,7 +122,7 @@ public class Problem {
      * @return a boolean value representing whether we can get to node end from node start or not.
      */
     private static boolean BFS(int[][] graph, int start, int destination, int n) {
-        boolean[] visited = new boolean[graph.length]; // to keep track of visited nodes
+        boolean[] visited = new boolean[n]; // to keep track of visited nodes
         Queue<Integer> queue = new LinkedList<>(); // to keep track of nodes to be visited
         visited[start] = true; // mark the starting node as visited
         queue.add(start); // add the starting node to the queue
@@ -194,7 +194,7 @@ public class Problem {
 
         }
         // verificam daca se poate ajunge de la nodul(locatia) start la nodul(locatia) end.
-        return BFS(graph, start, end, n);
+        return Problem.BFS(graph, start, end, n);
     }
 
 

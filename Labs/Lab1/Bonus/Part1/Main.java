@@ -4,35 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void afisareMatrice(int[][] matrice, int dimensiune){
-        for(int i = 0 ; i < dimensiune ; i++) {
-            for (int j = 0; j < dimensiune; j++) {
-                System.out.print(matrice[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-    public static void setareMatriceZero(int[][] matrice, int dimensiune){
-        for(int i = 0 ; i < dimensiune ; i++)
-            for(int j = 0 ; j < dimensiune ; j++)
-                matrice[i][j] = 0;
-    }
-    public static  int[][] multiplyMatrices(int[][] a, int[][] b,  int dimensiune){
-        //matricile sunt patratice
-        int[][] rezultat = new int[dimensiune][dimensiune];
-        setareMatriceZero(rezultat,dimensiune);
-
-        for (int i = 0; i < dimensiune; i++) { // cu i time evidenta liniilor
-            for (int j = 0; j < dimensiune; j++) { // cu j tinem evidenta coloanelor
-                for (int k = 0; k < dimensiune; k++) { // cu k tinem evidenta elementelor de pe acele linii si coloane
-                    rezultat[i][j] += a[i][k] * b[k][j];
-                }
-            }
-        }
-        return rezultat;
-    }
-
 
     public static void main(String[] args) {
 
@@ -41,7 +12,7 @@ public class Main {
         System.out.print("Enter the value of n : ");
         int n = scanner.nextInt();
 
-        //verificam ca n sa fie natural
+        //Verificam ca n sa fie natural
         if(n <= 0)
             throw new NumberFormatException("Numarul NU trebuie sa fie NEGATIV sau ZERO!");
 
@@ -51,7 +22,7 @@ public class Main {
 
         //Setam toate elementele pe 0
 
-        setareMatriceZero(matrice,n);
+        Utilitar.setareMatriceZero(matrice,n);
 
         //Pentru fiecare element i, el va fi legat de i-1 si i+1, iar daca i+1 depaseste n atunci ne vom intoarce cu i de la 0
         //iar daca i-1 < 0 atunci ne vom duce cu indexul la n
@@ -80,24 +51,24 @@ public class Main {
             }
         }
 
-        //afisare matrice
+        //Afisare matrice.
         System.out.println("Matricea de adiacenta calculata : ");
-        afisareMatrice(matrice,n);
+        Utilitar.afisareMatrice(matrice,n);
 
 
-        int[][] aux = new int[n][n];
+        int[][] aux = new int[n][n]; // Aici retinem rezultatul ridicarii la putere a matricii.
 
 
         for(int i = 2 ; i <=n ; i++){
             if(i == 2){
-                aux = multiplyMatrices(matrice,matrice,n).clone();
+                aux = Utilitar.multiplyMatrices(matrice,matrice,n).clone();
                 System.out.println("Matricea A^" + i + " : ");
-                afisareMatrice(aux,n);
+                Utilitar.afisareMatrice(aux,n);
             }
             else {
-                aux = multiplyMatrices(aux,matrice,n).clone();
+                aux = Utilitar.multiplyMatrices(aux,matrice,n).clone();
                 System.out.println("Matricea A^" + i + " : ");
-                afisareMatrice(aux,n);
+                Utilitar.afisareMatrice(aux,n);
 
             }
         }

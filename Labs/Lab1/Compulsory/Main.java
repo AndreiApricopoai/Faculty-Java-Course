@@ -5,25 +5,26 @@ import java.lang.Math;
 
 class Main
 {
-	public static void main(String args[]) 
+	public static void main(String[] args)
 	{
         
         System.out.println("Hello, World");
         String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
 
-        int n = (int) (Math.random() * 1_000_000);
+        int n = (int) (Math.random() * 1_000_000); // Aici generam un numar random.
 
-        n = ((n * 3) + 0b10101 +  0xFF) * 6;
+        n = ((n * 3) + 0b10101 +  0xFF) * 6; // Calculul cerut.
 
 
         int sum = 0;
-        
+
+        // Aici generam prima suma a cifrelor.
          while(n != 0){
             sum = sum + n%10;
             n = n / 10;
          }
         
-
+        // Aici generam cifra de control.
         while(sum > 9){
 
             n = sum;

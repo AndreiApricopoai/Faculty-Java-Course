@@ -35,6 +35,8 @@ public class Main
         network.add(company2);
         network.add(company3);
 
+
+
         //Aici se face afisarea retelei(persoane si companii)
         System.out.println(network);
 

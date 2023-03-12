@@ -3,7 +3,7 @@ package Lab1.Homework;
 public class Main {
 
     //In rezolvarea acestei probleme folosesc metoda permutarilor sirului 1,2,3,...,n
-    public static void main(String args[]){
+    public static void main(String[] args){
 
         //aici avem partea de validare (veificam ca avem un singur argument "n", verificam ca "n" este natural)
 
@@ -30,16 +30,16 @@ public class Main {
             throw new IllegalArgumentException("VALOAREA DATA NU ESTE NUMAR NATURAL!");
         else
         {
-            // aici construim matricea
+            // Aici construim matricea.
             int[][] matrice = new int[n][n];
 
-            for(int i = 0 ; i < n ; i++) // aici punem 1 pe diagonala principala
+            for(int i = 0 ; i < n ; i++) // Aici punem 1 pe diagonala principala.
                 matrice[i][i] = 1;
 
             int k = 0;
             int count = 0;
 
-            // aici facem pentru elementele deasupra diagonalei principale
+            // Aici facem pentru elementele deasupra diagonalei principale.
             for (int i = 0 ; i < n-1 ; i++ ){
                 count = 2;
                 for(int j = k+1 ; j < n ; j++){
@@ -49,7 +49,7 @@ public class Main {
                 k++;
             }
 
-            // aici facem pentru elementele de sub diagonala principala
+            // Aici facem pentru elementele de sub diagonala principala.
             k = 1;
 
             for (int i = 1 ; i < n ; i++ ){
@@ -62,13 +62,13 @@ public class Main {
             }
 
 
-            if(n > 30000){ // aici avem un "n" mare
+            if(n > 30000){ // Aici avem un "n" mare.
 
                 long stop = System.nanoTime(); // ne oprim
                 long totalTime = stop - start;
                 System.out.println("\nTimpul total necesar : " + totalTime + " nanosecunde.\n");
             }
-            else{ // aici avem un "n" mic
+            else{ // Aici avem un "n" mic.
 
                 StringBuilder builder = new StringBuilder();
 
