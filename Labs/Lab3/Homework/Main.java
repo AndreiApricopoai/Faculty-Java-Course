@@ -29,7 +29,7 @@ public class Main {
 
 
         c3.addEmployee(p4,"Manager");
-        c1.addEmployee(p5,"Sclav");
+        c1.addEmployee(p5,"Maturator");
         c2.addEmployee(p4,"Programator");
         c2.addEmployee(p5,"Senior");
         c3.addEmployee(p5,"Asociat");
@@ -43,8 +43,6 @@ public class Main {
 
         // Afisam reteaua.
         network.printNetwork();
-
-
 
 
     }

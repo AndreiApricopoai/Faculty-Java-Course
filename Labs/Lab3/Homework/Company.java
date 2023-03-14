@@ -1,6 +1,7 @@
 package Lab3.Homework;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The  type Company that implements Comparable and Node interfaces.
@@ -11,7 +12,7 @@ public class Company implements Node, Comparable<Company>{
 
     private String name;
     private int numberOfDepartments;
-    private HashMap<Person,String> employees;
+    private Map<Person,String> employees;
 
     /**
      * Instantiates a new Company object.
@@ -79,7 +80,7 @@ public class Company implements Node, Comparable<Company>{
      *
      * @return the employees
      */
-    public HashMap<Person, String> getEmployees() {
+    public Map<Person, String> getEmployees() {
         return employees;
     }
 

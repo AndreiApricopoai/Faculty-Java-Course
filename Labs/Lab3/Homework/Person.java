@@ -2,6 +2,7 @@ package Lab3.Homework;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The abstract type Person that implements Comparable and Node interfaces.
@@ -12,7 +13,7 @@ public abstract class Person implements Node, Comparable<Person>{
 
     private String name;
     private String birthDate;
-    private HashMap<Node,String> relationships;
+    private Map<Node,String> relationships;
 
 
     /**
@@ -82,7 +83,7 @@ public abstract class Person implements Node, Comparable<Person>{
      *
      * @return the relationships
      */
-    public HashMap<Node, String> getRelationships() {
+    public Map<Node, String> getRelationships() {
         return relationships;
     }
 
