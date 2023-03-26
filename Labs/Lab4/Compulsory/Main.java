@@ -1,4 +1,4 @@
-package org.example.andrei;
+package Lab4.Compulsory;
 
 import java.util.Arrays;
 import java.util.LinkedList;

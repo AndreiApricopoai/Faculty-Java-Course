@@ -1,4 +1,4 @@
-package Lab4.Compulsory;
+package Lab4.Homework;
 
 import java.util.Objects;
 
@@ -104,9 +104,6 @@ public class Project implements Comparable<Project> {
      */
     @Override
     public String toString() {
-        return "Project{" +
-                "name='" + name + '\'' +
-                ", presentationDate='" + presentationDate + '\'' +
-                '}';
+        return '(' + name + " : " +presentationDate + ')';
     }
 }

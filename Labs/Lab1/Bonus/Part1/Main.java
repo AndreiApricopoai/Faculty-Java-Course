@@ -56,7 +56,7 @@ public class Main {
         Utilitar.afisareMatrice(matrice,n);
 
 
-        int[][] aux = new int[n][n]; // Aici retinem rezultatul ridicarii la putere a matricii.
+        int[][] aux = new int[n][n]; // Aici retinem rezultatul ridicarii la putere a matricii.5
 
 
         for(int i = 2 ; i <=n ; i++){

@@ -1,9 +1,9 @@
-package Lab4.Compulsory;
+package Lab4.Homework;
 
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /**
  * The type Student.
@@ -119,7 +119,10 @@ public class Student implements Comparable<Student>{
      */
     @Override
     public int compareTo(Student o) {
-        return (this.getName().compareTo(o.getName()));
+
+        int numProjects1 = this.admissibleProjects.size();
+        int numProjects2 = o.admissibleProjects.size();
+        return Integer.compare(numProjects1, numProjects2);
     }
 
 
@@ -153,10 +156,13 @@ public class Student implements Comparable<Student>{
      */
     @Override
     public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", admissibleProjects=" + admissibleProjects +
-                '}';
+
+        String projects = admissibleProjects.stream()
+                .map(Project::getName)
+                .collect(Collectors.joining(", "));
+
+        int numberOfProjects = admissibleProjects.size();
+        return name + ": [" + projects + "] (" + numberOfProjects + ")";
+
     }
 }

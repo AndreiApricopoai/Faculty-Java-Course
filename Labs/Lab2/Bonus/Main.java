@@ -1,9 +1,25 @@
-package Lab2.Homework;
+package Lab2.Bonus;
 
-import Lab2.Bonus.Solution;
+import Lab2.Homework.*;
+
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+
+    public static Problem generateLargeProblem(int maxLocations, int maxRoads){
+        Problem problem = new Problem();
+
+        Random random = new Random();
+        int randomLocationNumber = random.nextInt(maxLocations - 10) + 10;
+        int randomRoadsNumber = random.nextInt(maxRoads - 10) + 10;
+
+        return problem;
+    }
+
+    public static void main(String[] args) {
 
         //Aici se creeaza diferite locatii
         Location location1 = new Airport("Iasi Airport",100,200,5,1000);
@@ -56,7 +72,7 @@ public class Main {
         //Aici se incearca adaugarea de conexiuni iar in caz de eroare programul se opreste
         try {
             problem.addConnection(connection1)
-                   // .addConnection(connection2)
+                    // .addConnection(connection2)
                     .addConnection(connection3)
                     .addConnection(connection4);
         } catch (Exception e) {
@@ -64,23 +80,11 @@ public class Main {
             System.exit(0);
 
         }
-    /*  Aici se verifica daca instanta problemei este valida
-        Nu avem nevoide de aceasta functie intrucat metodele de adaugare locatii, drumuri si conexiuni verifica deja aceste conditii
 
-        if(problem.isValidInstance())
-            System.out.println("Valid Instance");
-        else
-            System.out.println("Invalid Instance");
 
-  */
-
-        //Aici verificam daca se poate ajunge dintr-o locatie in alta locatie printr-o secventa de drumuri
-        if(problem.existsPathBetweenLocations(location5,location4))
-            System.out.println("putem ajunge");
-        else
-            System.out.println("nu putem ajunge");
-
+        // Aici se incearca adaugarea unei probleme la un obiect care rezolva problema.
         try {
+            // In cazul in care problema atasata este invalida se arunca o exceptie.
             Solution solution = new Solution(problem);
             solution.solve(location1,location6,Solution.SHORTEST_ROUTE);
 
@@ -89,6 +93,17 @@ public class Main {
             e.printStackTrace();
         }
 
+
+        //Aici generam in mod random o instanta mai mare a unei probleme.
+//        Problem randomInstance = generateLargeProblem();
+//        try {
+//            Location start =
+//            Solution solution = new Solution(randomInstance);
+//            solution.solve(location1,location6,Solution.SHORTEST_ROUTE);
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
 
 
 

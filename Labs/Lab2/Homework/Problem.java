@@ -26,6 +26,23 @@ public class Problem {
     }
 
     /**
+     * getter for the locations' member.
+     * @return the current list of locations.
+     */
+    public ArrayList<Location> getLocations() {
+        return locations;
+    }
+
+
+    /**
+     * getter for the connections' member.
+     * @return the current list of connections.
+     */
+    public ArrayList<Connection> getConnections() {
+        return connections;
+    }
+
+    /**
      * Add location problem.
      *
      * @param addedLocation the added location
@@ -169,7 +186,7 @@ public class Problem {
 
         // Asignam pentru fiecare locatie cate un index de la 0 la n-1
         for (Location location : locations) {
-            map.put(location,new Integer(k));
+            map.put(location, Integer.valueOf(k));
             k++;
         }
 
@@ -184,15 +201,7 @@ public class Problem {
         int start = map.get(location1).intValue(); // i = starting node
         int end = map.get(location2).intValue(); // j = destination node
 
-        // Aici afisam matricea
-        for(int i = 0 ; i < n ; i++){
-            for(int j = 0 ; j < n ; j++)
-            {
-                System.out.print(graph[i][j]+" ");
-            }
-            System.out.println();
 
-        }
         // verificam daca se poate ajunge de la nodul(locatia) start la nodul(locatia) end.
         return Problem.BFS(graph, start, end, n);
     }
