@@ -43,7 +43,7 @@ public class Robot implements Runnable{
                     running = false;
                     System.out.println("Robot " + name + " finished exploration");
                 }
-                Thread.sleep(150);
+                Thread.sleep(2500);
             } catch (InterruptedException e) {
                 running = false;
                 System.out.println("Robot " + name + " was interrupted");
